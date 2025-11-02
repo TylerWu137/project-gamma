@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p><span class="name">You:</span></p>
+                    <p><span class="dialogue">“Apologies Sentinel. I was sent here to uncover a strange signal that is 
+                        believed to be originating from somewhere in the Atlantic Ocean.”</span></p>
+                    <p><span class="dialogue">“Do you think you could help me?”</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Sentinel:</span></p>
+                    <p><span class="dialogue">“Ah I see. Being made of stone and psychically connected to the 
+                        ocean's seafloor, I have also sensed a strange presence down here."</span></p>
+                    <p><span class="dialogue">"However, I am unable to leave the museum, as I am its sole protector."</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Sentinel:</span></p>
+                    <p><span class="dialogue">“But I believe the signal is coming from over there.”</span></p>
+                    <p>The Sentinel points out into the distant ocean.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>It then breaks off a piece of itself and hands it to you.</p>
+                    <p><span class="name">Sentinel:</span></p>
+                    <p><span class="dialogue">“Here, you can use this piece of stone from me to connect to the signal. 
+                        As the stone comes closer to the signal, it will vibrate more. You can use this as a compass to 
+                        navigate towards the signal.”</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Sentinel:</span></p>
+                    <p><span class="dialogue">“Now go and seek the signal.”</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You leave the museum, saying farewell to the Sentinel, a new friend.</p>
+                    <p>As you leave, you spot another Temporal Blossom and touch it.</p>
+                    <p><span class="notes">You activate another Temporal Blossom: if you or Gamma are unable to 
+                        proceed or die, the temporal blossom rewinds time to this point, when you touched the 
+                        flower.</span></p>
+                </div>
+            </div>
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="take the Stone" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('../exploration/exploration.html')" hidden/>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add item: sentinel's stone
+        addItem("Sentinel's Stone");
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

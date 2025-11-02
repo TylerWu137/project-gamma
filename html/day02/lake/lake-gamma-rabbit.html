@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You call Gamma to your side, and bend over the side of the lake to scoop up some water, but a fish 
+                        jumps out and attacks you.</p>
+                    <p>Itching for another fight after it lost to a rabbit, Gamma pounced at the fish in mid air, flaring what 
+                        seems to be fangs that were never there before arriving on Earth.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Unlike unmutated fish, this fish has a unique trait. Before Gamma was able to catch it, it expanded and 
+                        let out a blinding light, allowing it to escape back into the lake.</p> 
+                    <p>You update your device's data on fish.</p>   
+                </div>
+            </div>
+            
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value='"Attack!"' onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('night.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

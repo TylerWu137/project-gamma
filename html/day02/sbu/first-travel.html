@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>Since you need to gather data across multiple states and countries, you are tasked to survey towns 
+                    far apart. Your next stop is a town called Herricks, which is also on Long Island.
+                </p>
+                <p>While it is tens of miles away, your high-speed hoverbike is able to reach Herricks in just a few minutes.
+                </p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('../lake/lake.html')"/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

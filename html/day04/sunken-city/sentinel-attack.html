@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Agitated, the Sentinel uses <span class="move">Gravitide Slam</span>: it lifts its massive stone 
+                        limbs and slams them to the ground, sending shockwaves through the seafloor.</p>
+                    <p>The seafloor explodes beneath Gamma, sending him flying and hitting a wall.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You swim to Gamma and assess the damage.</p>
+                    <p>The Sentinel walks towards you, and in a bellowing voice, it speaks to you:</p>
+                    <p><span class="dialogue">“I am the Sentinel, protector of this sacred museum. Why have you come 
+                        here to disturb my peace?”</span></p>
+                </div>
+            </div>
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="help Gamma" onclick="nextStep(1,3)"/>
+                <input class="scalable-text option-button" type="button" value="swim away" onclick="nextPage('sentinel-swim-away.html')" hidden/>
+                <input class="scalable-text option-button" type="button" value="fight back" onclick="nextPage('sentinel-fight-back.html')" hidden/>
+                <input class="scalable-text option-button" type="button" value="talk" onclick="nextPage('sentinel-talk.html')" hidden/>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+    
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

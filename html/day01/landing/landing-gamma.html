@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+    
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Gamma sneaks up the bush, when suddenly a wild mutated rabbit jumps out of it and bites the dog. Gamma is 
+                    able to kick the rabbit away and run back to you. However, the bite has infected Gamma with fast-acting 
+                    poison, stopping his heart.</p>
+                    <p>You search your bag for a potential cure and inject Gamma with epinephrine that jolts Gamma back to life. 
+                    You quickly clean and wrap up the infected area and put Gamma on the back seat of your hoverbike.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You walk to the bush and collect fur and other samples to analyze and add to your device's data.</p>
+                    <p><span class="notes">Creature Update: Gamma gains immunity to poison and learns the ability <span class="move">Poison Fang</span>: protracts fangs
+                        and lands a poisonous bite on an enemy.</span></p>
+                </div>
+            </div>
+            
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('../night/night.html')" hidden/>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // Add moves: bite and poison fang
+        changeMove(JSON.parse(localStorage.getItem("currCreature")), "Bite", "Poison Fang");
+        updateCurrCreature(JSON.parse(localStorage.getItem("currCreature")));
+
+        // Visited landing-gamma page
+        localStorage.setItem('landing-gamma', true);
+
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

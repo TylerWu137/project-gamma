@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Gamma does not seem like he is able to fight, so you pick him up and run away.</p>
+                    <p>Suddenly, Gamma bites you, trying to tell you he's not done fighting just yet.</p>
+                    <p>A grey aura surrounds Gamma, and he charges at the turtle again, but this time, he is able to land 
+                        a hit, knocking the turtle back into the ocean.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="notes">Gamma learns Tackle: charges at the enemy and tackles them down</span></p>
+                    <p>You quickly tend to Gamma's wounds using the <span class="item">healing water</span> from the bioluminescent lake, which rapidly 
+                        heals Gamma.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value='continue' onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('../sunken-city/prep.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add move: Tackle
+        addMove(JSON.parse(localStorage.getItem("currCreature")), "Tackle");
+        updateCurrCreature(JSON.parse(localStorage.getItem("currCreature")));
+
+        displayLocalStorage();
+    </script>
+
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

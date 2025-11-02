@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You call Gamma to your side, and bend over the side of the lake to scoop up some water, but a fish 
+                        jumps out and attacks you.</p>
+                    <p>While in mid air, the fish releases sharp scales at Gamma's legs and plops back into the water. 
+                        You pull the scales out of Gamma's legs, and regardless of whether the water may be toxic, you 
+                        splash some onto Gamma's legs before he bleeds out.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Surprisingly, the water healed all of Gamma's wounds, closing them.</p> 
+                    <p>You take some water with you for its healing properties and update your device on fish and luminescent water.</p>   
+                </div>
+            </div>
+            
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="heal Gamma" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('night.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

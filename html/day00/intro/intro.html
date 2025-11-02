@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> 
+        <!-- Contains scene drawing as the background image -->
+
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>In 2047, a nuclear world war was set off. Nuclear missiles were launched worldwide, killing billions of 
+                    people, wildlife, and the environment, creating unlivable conditions. Suspecting a nuclear war, some 
+                    countries devised contingency plans to escape Earth and survive in space stations until conditions on Earth
+                    were safe enough to return.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>It has been 100 years since the nuclear war, and we believe it may be safe to return. We have chosen to 
+                    send you back to Earth. Your task is to determine whether it is safe for the rest of us to return as well. 
+                    Here is a device for you to register environmental conditions and potential wildlife that has survived, 
+                    and communicate with us. Your dog, Gamma, will also accompany you, as well as a high-speed hover-bike, 
+                    food rations, and other equipment.</p>
+                </div>
+            </div>
+            
+
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1, 1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('../../day01/landing/landing.html')" hidden/>
+            </div>
+
+        </div>
+
+        <!-- P5JS Files -->
+        <script src="../../../js/Cloud.js"></script>
+        <script src="../../../js/Raindrop.js"></script>
+        <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    </div>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

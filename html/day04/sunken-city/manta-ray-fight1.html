@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Gamma swims towards them, but the manta rays easily outmaneuver him.</p>
+                    <p>Due to Gamma's speed disadvantage, he is unable to land a hit, even if he can see them. The 
+                        mother manta ray uses Slipstream, surrounding itself with condensed water and charging at Gamma, 
+                        landing a direct hit.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Gamma manages to shake it off. His grey aura shifts to a dark blue, and condensed water begins 
+                        to surround him.</p>
+                    <p><span class="notes">Gamma's Tackle ability has evolved into Slipstream.
+                        </span></p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value='"Stay Strong!"' onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value='"Use Slipstream!"' onclick="nextPage('manta-ray-fight2.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add move: slipstream
+        addMove(JSON.parse(localStorage.getItem("currCreature")), "Slipstream");
+        updateCurrCreature(JSON.parse(localStorage.getItem("currCreature")));
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

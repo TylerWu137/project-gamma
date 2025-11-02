@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You command Gamma to attack.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <span id="dependent-options" hidden></span>                
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // Fight scene: display move options
+        var textEl = document.getElementById('dependent-divs');
+        var optionsEl = document.getElementById('dependent-options');
+        var textHTMLToInsert = "";
+        var optionsHTMLToInsert = "";
+
+        var creature = JSON.parse(localStorage.getItem("currCreature"));
+
+        creature.moves.forEach((move) => {
+            if(move != "Spectral Sight") {
+                optionsHTMLToInsert += `
+                    <input class="scalable-text option-button" type="button" value="${move}" onclick="attack('${move}')"/>
+                `;
+            }
+        });
+        optionsEl.insertAdjacentHTML("beforebegin", optionsHTMLToInsert);
+
+        // delete placeholder
+        optionsEl.remove();
+        // result of each move use
+
+        function attack(move) {
+            if(move === "Bite") {
+                nextPage('fight-bite.html');
+            } else if(move === "Poison Fang") {
+                nextPage('fight-poison-fang.html');
+            } else if(move === "Tackle") {
+                nextPage('fight-tackle.html');
+            } else if(move === "Slipstream") {
+                nextPage('fight-slipstream.html');
+            }
+        }
+
+        optionsEl.remove();
+
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

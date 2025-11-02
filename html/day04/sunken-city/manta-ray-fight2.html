@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Gamma charges at the manta ray with immense speed. Shocked that Gamma is able to see it, the manta 
+                        ray reacts too late, and Gamma lands a direct hit.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Gamma quickly rushes over to you, and you hand him a mutated vine. He swims towards the manta 
+                        ray and releases the vine, which emits a calming mist and tames the manta ray.</p>
+                    <p><span class="notes tameHeader">
+                        <span class="creature">Manta Ray</span> has been tamed! Abilities:
+                    </span></p>
+                    <span class="notes">
+                        <ul>
+                            <li><span class="move">Aqua Veil</span>: secretes a fluid that renders itself invisible underwater
+                            <li><span class="move">Slipstream</span>: surrounds itself with condensed water and charges at the enemy
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="capture it" onclick="nextStep(1, 1)"/>
+                <input class="scalable-text option-button" type="button" value="continue exploring" onclick="nextPage('museum.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // capture Manta Ray
+        var MantaRay = {
+            name: "Manta Ray",
+            moves: ["Aqua Veil", "Slipstream"],
+            status: true
+        };
+        addCreature(MantaRay);
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

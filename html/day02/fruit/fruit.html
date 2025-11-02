@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+    
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        <div id="leaves"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>It is the next morning; since your rations are limited, you go out and look for fruit and other food.
+                    You come across some trees that have blue apples on them, and pick one off.</p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="taste it" onclick="nextPage('fruit-taste.html')"/>
+                <input class="scalable-text option-button" type="button" value="analyze it" onclick="nextPage('fruit-analyze.html')"/>
+                <input class="scalable-text option-button" type="button" value="give it to Gamma" onclick="nextPage('fruit-gamma.html')"/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Leaf.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add item: blue apple
+        addItem("blue apple");
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

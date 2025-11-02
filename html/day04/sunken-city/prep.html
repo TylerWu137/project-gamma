@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You and Gamma make preparations for your underwater adventures.</p>
+                    <p>You spot a strange, pulsing flower growing by the shore, resembling a clock. You try touching it and 
+                        it releases a small shockwave that hits you and Gamma.</p>
+                    <p><span class="notes">Temporal Blossom: if you or Gamma are unable to proceed or die, the temporal 
+                        blossom rewinds time to this point, when you touched the flower.</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You move your hoverbike onto the water, and it automatically turns on its underwater mode.</p>
+                    <p>You and Gamma put on your high-tech suits, which allows you to survive in extreme conditions, 
+                        such as underwater and outer space, and begin your descent.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="dive underwater" onclick="nextPage('../sunken-city/underwater.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+     <!-- Update Local Storage -->
+     <script src="../../../js/storage.js"></script>
+     <script>
+        // add item: temporal blossom
+        addItem("temporal blossom");
+        setTimeStamp(window.location.href);
+        displayLocalStorage();
+     </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

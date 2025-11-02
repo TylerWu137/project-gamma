@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You continue to swim around the sunken city, and spot a ruined museum overgrown with mutated corals, 
+                        seaweed, and algae.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>A magnificent statue of a dinosaur guards the entrance to the museum, but parts of it have 
+                        unfortunately been crumbled, eroded, or overgrown by wild oceanic plants. Intrigued, you enter.
+                    </p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You move forward, visiting the exhibits showcasing different periods of Earth, dating back to its 
+                        creation, to the dinosaurs of the Mesozoic Era, the ancient civilizations in the Ancient Era, 
+                        the Middle Ages, the Reformation and Scientific Revolution, all the way to the Modern Era of 
+                        Technology!</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>As you circle back to the entrace of the museum, you see a flash 
+                        in the statue's eyes. It suddenly comes to life and charges toward you.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1, 1)"/>
+                <input class="scalable-text option-button" type="button" value="enter the museum" onclick="nextStep(1, 1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1, 2)" hidden/>
+                <input class="scalable-text option-button" type="button" value="swim away" onclick="nextPage('museum-swim-away.html')" hidden/>
+                <input class="scalable-text option-button" type="button" value="fight the Sentinel" onclick="nextPage('museum-fight.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

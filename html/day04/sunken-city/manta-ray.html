@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You swim around the sunken city and find a family of manta rays!</p>
+                    <p>Alarmed by your presence the manta rays secrete fluid around their bodies that render them invisible.</p>
+                </div>
+                <span id="dependent-divs"></span>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1, 1)"/>
+                <span id="dependent-options"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // Insert text depending on previous user choices
+        var textEl = document.getElementById('dependent-divs');
+        var optionsEl = document.getElementById('dependent-options');
+        var textHTMLToInsert = "";
+        var optionsHTMLToInsert = "";
+        // if no spectral sight - continue:
+        if(localStorage.getItem("lake-test") == null) {
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p>Unable to see the manta rays, you simply continue exploring the sunken city.</p>
+                </div>
+            `;
+            optionsHTMLToInsert += `
+                <input class="scalable-text option-button" type="button" value="continue exploring" onclick="nextPage('museum.html')" hidden/>
+            `;
+        } else { // if spectral sight - fight manta ray
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p>Gamma uses Spectral Sight, enabling him to see the manta rays even though they appear invisible to you.</p>
+                </div>
+            `;
+            optionsHTMLToInsert += `
+                <input class="scalable-text option-button" type="button" value="fight" onclick="nextPage('manta-ray-fight1.html')" hidden/>
+            `;
+        }
+
+        // Add HTML and remove placeholders
+        textEl.insertAdjacentHTML("beforebegin", textHTMLToInsert);
+        optionsEl.insertAdjacentHTML("beforebegin", optionsHTMLToInsert);
+
+        // delete placeholder
+        textEl.remove();
+        optionsEl.remove();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-underwater.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Using this opportunity, you tell Gamma to fight back.</p>
+                    <p>Gamma struggles to get up and attempts to attack the Sentinel again, but the Sentinel picks up 
+                        Gamma with his stone limb and throws him across the room.</p>
+                    <p>Gamma is unable to continue forward…</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You use the <span class="item">Temporal Blossom</span> to rewind time, which sends you back to the
+                        last Temporal Blossom you came into contact with.</p>
+                </div>
+            </div>
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="rewind time" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="resetTimeStamp()" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <script src="../../../js/storage.js"></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

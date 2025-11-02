@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Gamma charges forward.</p>
+                    <p>The turtle uses <span class="move">Bubble Blast</span>, releasing bubbles that pop and cause mild disorientation.</p>
+                    <p>Gamma becomes confused and crashes into a coconut tree.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You tell Gamma to try again. Gamma shakes off the bubbles and charges at the turtle even 
+                        faster and manages to scratch it.</p>
+                    <p>It barely does any damage, and the turtle tackles Gamma, knocking him all the way back 
+                        to you.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value='"Come on Gamma!"' onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value='help Gamma' onclick="nextPage('fight-tackle.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

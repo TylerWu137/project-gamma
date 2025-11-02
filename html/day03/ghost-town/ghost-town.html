@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>Being back in the hometown of your ancestors, Herricks, you ride around, trying to find any survivors, 
+                        though highly unlikely. You visit your great grandparents' house, the high school, popular social 
+                        settings like the local Starbucks, bowling alley, and ramen place all in ruins, but you unfortunately 
+                        don't find anyone, as you predicted.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You continue your search, when you spot a building that seems to be intact — the only one in the entire 
+                        town. You enter the building and find spots of recent activity, such as a couple fires and cans of 
+                        food left open. Since you've had bad experiences with survivors in the past, you eat a blue apple you packed from
+                        yesterday to boost your stats in preparation.</p>
+                    <p>You investigate the building further and find an elderly human with what looks like a mutated dog!</p>
+                </div>
+            </div>
+
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,2)"/>
+                <input class="scalable-text option-button" type="button" value="run away" onclick="nextPage('run.html')" hidden/>
+                <input class="scalable-text option-button" type="button" value="talk to him" onclick="nextPage('chat.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

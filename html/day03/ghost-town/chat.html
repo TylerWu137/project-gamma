@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>The two of you begin talking. He shares his stories of how his parents survived and his journey on 
+                        this forsaken planet, and you share stories of your time in the space station, how you were born 
+                        there and that that was all you have known before coming to Earth. He also shares surviving tips, which 
+                        you add to your device's data.</p>
+                    <p>You ask about his dog, and he teaches you a secret about the mutated animals and plants.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">“After the nuclear war, many of the animals developed strange abilities. 
+                        Rabbits poison you with their bite, fish shoot acid from their mouths, birds can release electric 
+                        bolts, deer create icy paths where they walk, and many more."</span></p>
+                    <p><span class="dialogue">“My dog, Echo, has learned some abilities, such as Inferno Roar, Crystal Armor, 
+                        and Hyperstride.”</span></p>
+                </div>
+                <span id="dependent-divs"></span>
+                <div class="scalable-text step" hidden>
+                    <p>The elderly man continues to teach you what he has learned.</p>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">“Be aware, mutated animals are only able to carry 4 abilities with them. 
+                        Any more and they begin to act feral and primal, becoming less like your buddy and more like a wild 
+                        animal, so be careful with your dog; he seems like a nice companion. I should know."
+                    </span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">“Mutated animals can be fought, allowing your dog to learn the abilities 
+                        used against him, but mutated animals can also be tamed, captured, and fight alongside you as 
+                        well.”
+                    </span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>In order to capture a mutated animal, you must:</p>
+                    <ol>
+                        <li>Weaken the creature by fighting it with your companion(s), which is most effective, 
+                            using items, or surprising it.</li>
+                        <li>Deploy the capturing device: a <span class="item">mutated vine</span> that will release a calming mist when it comes 
+                            in contact, capable of taming a mutated creature if weak enough.</li>
+                        <li>If successful, the creature will be an ally that will follow you and help with fighting 
+                            and exploration.</li>
+                    </ol>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Due to your own limitations, only 6 companions are allowed to be kept by your side.</p>
+                    <p>The mutated vines used to tame creatures are found everywhere. Be sure you keep some with you. 
+                        The elderly man's dog walks up to you, giving a handful of mutated vines.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <span id="dependent-options"></span>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('night.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add item: mutated vine
+        addItem("mutated vine");
+        displayLocalStorage();
+
+        // Adds text sequence depending on previous user choices
+        var textEl = document.getElementById('dependent-divs');
+        var optionsEl = document.getElementById('dependent-options');
+        var textHTMLToInsert = "";
+        var optionsHTMLToInsert = "";
+        // if ran away:
+        if(localStorage.getItem("ghost-town-run") != null) {
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">
+                        “My dog used Hyperstride to reach your hoverbike and stop you from running away.”
+                    </span></p>
+            `; 
+        } else {
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+            `; 
+        }
+        // old man explanation
+        textHTMLToInsert += `
+                <p><span class="dialogue">
+                    “And I see your dog is capable of developing special abilities as well. Fascinating!”
+                </span></p>
+            </div>
+            <div class="scalable-text step" hidden>
+                <p>Confused, you ask, <span class="dialogue">“What do you mean? My dog doesn't have any special 
+                    abilities. he isn't mutated. He wasn't even born on Earth. He was born on the space station 
+                    like me.”</span>
+                </p>
+            </div>
+            <div class="scalable-text step" hidden>
+                <p><span class="name">Old Man:</span></p>
+                <p><span class="dialogue">
+                    “Ah yes, that may be true, but when coming into contact with mutated animals, certain animals, 
+                    like your dog, can adapt and learn new abilities.“
+                </span></p>
+            </div>
+        `; 
+        optionsHTMLToInsert += `
+            <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+            <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+            <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+        `;
+        // if fought rabbit: add
+        if(localStorage.getItem("landing-gamma") != null) {
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">
+                        "Has he come into contact with any mutated animals?”
+                    </span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">You:</span></p>
+                    <p><span class="dialogue">
+                        “He was bit my a poisonous rabbit.”
+                    </span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">
+                        “That must be how he developed the ability Poison Fang.”
+                    </span></p>
+                </div>
+            `;
+            optionsHTMLToInsert += `
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+            `;
+        }
+        // if tested water at lake: add
+        if(localStorage.getItem("lake-test") != null) {
+            textHTMLToInsert += `
+                <div class="scalable-text step" hidden>
+                    <p><span class="name">Old Man:</span></p>
+                    <p><span class="dialogue">
+                        “Interesting, your dog has `;
+            if(localStorage.getItem("landing-gamma") != null) {
+                textHTMLToInsert += "also ";
+            }
+            textHTMLToInsert += `
+                        developed an ability I've never seen before: Spectral Sight.”
+                    </span></p>
+                </div>
+            `;
+            optionsHTMLToInsert += `
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)" hidden/>
+            `;
+        }
+        // close run away if no other text outputted
+        if(localStorage.getItem("landing-gamma") == null && localStorage.getItem("lake-test") == null) {
+            textEl.insertAdjacentHTML("beforebegin", "</div>");
+        }
+
+        textEl.insertAdjacentHTML("beforebegin", textHTMLToInsert);
+        optionsEl.insertAdjacentHTML("beforebegin", optionsHTMLToInsert);
+
+        // delete placeholder
+        textEl.remove();
+        optionsEl.remove();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

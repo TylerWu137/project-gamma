@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>Though it was a rocky trip, you have successfully landed on Earth.</p>
+                <p>Location: Stony Brook, New York, United States</p>
+                <p>Your readings of the air quality and radiation levels are normal, so you exit your space pod and 
+                    explore the area around you. There appears to be movement in a nearby bush.</p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="follow the noise" onclick="nextPage('landing-follow.html')"/>
+                <input class="scalable-text option-button" type="button" value="send Gamma to check" onclick="nextPage('landing-gamma.html')"/>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../../js/formatting.js"></script>
+    
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+</body>
+
+
+</html>

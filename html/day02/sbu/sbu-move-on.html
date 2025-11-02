@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You hop on your hoverbike with Gamma in the backseat.</p>
+                    <p>You start the engine, but there seems to be some issues, so you hop off and discover a problem with 
+                        the energy source. You enter a nearby building to find some parts to fix your hoverbike. Once you 
+                        found what you were looking for, you head back to your bike when you spot some smoke in the distance.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>You proceed to check it out and see a group of figures circling a fire. Human survivors? </p>
+                    <p>Before you have a chance to greet them, they turn and charge at you.</p>
+                </div>
+            
+            </div>
+            
+            <div id="options"> <!-- Conditional for button -->
+                <input class="scalable-text option-button" type="button" value="check it out" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="run away" onclick="nextPage('sbu-apple.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

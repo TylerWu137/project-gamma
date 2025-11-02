@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <script src="../../../js/p5.js"></script>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Rain and Clouds Animation -->
+        <div id="rain"></div>
+        <div id="clouds"></div>
+
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>        
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>Night approaches.</p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="set up camp" onclick="nextPage('night-camp.html')"/>
+                <input class="scalable-text option-button" type="button" value="look for shelter" onclick="nextPage('night-shelter.html')"/>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js"></script>
+    
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

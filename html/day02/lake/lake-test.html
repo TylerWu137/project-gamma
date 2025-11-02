@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You test the water using your device, and it reads that the water is highly toxic. You start packing your 
+                        things and walking away, but then you spot Gamma panting, approaching the side 
+                        of the lake to take a sip of the water. Before you can stop him, he takes one huge gulp.</p>
+                    <p>You quickly pull him away before he can drink any more water when suddenly, his eyes begin to glow a 
+                        dark green. Unsure of what kind of properties the lake water has, you carefully track Gamma's health.</p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p>Since the water didn't kill Gamma, you take some of the water with you in case of emergencies.</p> 
+                    <p><scan class="notes">Gamma learns the ability <span class='move'>Spectral Sight</span>: gains night vision and can also see 
+                        wavelengths past the visible spectrum, such as infrared and ultraviolet!</scan></p>   
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="take some water" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextPage('night.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // add move: spectral sight
+        addMove(JSON.parse(localStorage.getItem("currCreature")), "Spectral Sight");
+        updateCurrCreature(JSON.parse(localStorage.getItem("currCreature")));
+
+        // Visited page: lake-test
+        localStorage.setItem("lake-test", true);
+
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div id="text">
+                <div class="scalable-text step">
+                    <p>You wake up to a sweet smell. The elderly man has cooked up a wonderful stew.</p>
+                    <p>As you leave with a full stomach, new knowledge, mutated vines, and your best companion Gamma, the elderly 
+                        man says his goodbyes.</p>
+                    <p><span class="dialogue">“I will spend my last years here, in my hometown with Echo, but I wish you the 
+                        best in exploring this new world!”</span></p>
+                </div>
+                <div class="scalable-text step" hidden>
+                    <p><span class="alert">Mission Update:</span></p>
+                    <p><span class="dialogue">	A strange signal has been detected off the coast of Long Island, in the 
+                        middle of the Atlantic Ocean. We need you to investigate this signal and gather data critical 
+                        for assessing Earth's long term survivability.</span></p>
+                    <p>You reroute your hoverbike to take you to the edge of Long Island.</p>
+                </div>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="continue" onclick="nextStep(1,1)"/>
+                <input class="scalable-text option-button" type="button" value="ride on" onclick="nextPage('../shoreline-battle/shoreline.html')" hidden/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/Raindrop.js"></script>
+    <script src="../../../js/p5jsAnimations.js"></script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>

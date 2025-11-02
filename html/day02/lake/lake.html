@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>It has been a long day, so you and Gamma need to find some fresh water and eat dinner.</p>
+                <p>You stop the hoverbike at an abnormally luminescent lake. You let Gamma stretch his legs and run around 
+                    for a bit, while you examine the water and possible fish and other aquatic life in the lake.</p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="test the water" onclick="nextPage('lake-test.html')"/>
+                <input class="scalable-text option-button" id="change-btn" type="button" value="let Gamma drink" onclick="nextPage('lake-gamma-rabbit.html')"/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        addItem("healing water");
+        
+        // Determine next page depending on whether user chose to have Gamma fight the rabbit
+        if(localStorage.getItem('landing-gamma') == null) {
+            document.getElementById("change-btn").onclick = function() {
+                nextPage('lake-gamma-no-rabbit.html');
+            };
+        }
+
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+
+</html>

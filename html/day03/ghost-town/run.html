@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <link rel="stylesheet" href="../../../css/styles-forest.css"/>
+    <link rel="stylesheet" href="../../../css/styles-scene.css"/>
+    <script src="../../../js/p5.js"></script>
+    <script src="../../../js/header.js" defer></script>
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains scene drawing as the background image -->
+
+        <!-- Clouds Animation -->
+        <div id="clouds"></div>
+        
+        <!-- Contains HUD and home button -->
+        <header-section></header-section>
+
+        <!-- Contains text and options for user -->
+        <div id="textbox">
+
+            <div class="scalable-text" id="text">
+                <p>While you were initially eager to try and find a survivor, you get struck with fear due to your 
+                    previous encounter with a human survivor and try to flee.</p>
+                <p>As you run back to your hoverbike outside, you see the same elderly man with his dog. How was 
+                    he able to travel faster than you, even with your enhanced speed from the blue apple? Is he also 
+                    eating blue apples?</p>
+                <p><span class="dialogue">“Let's chat!”</span> the elderly man shouts. The four of you walk back towards the building.</p>
+            </div>
+        
+            <div id="options">
+                <input class="scalable-text option-button" type="button" value="chat" onclick="nextPage('chat.html')"/>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="../../../js/Cloud.js"></script>
+    <script src="../../../js/p5jsAnimations.js" defer></script>
+
+    <!-- Update Local Storage -->
+    <script src="../../../js/storage.js"></script>
+    <script>
+        // Visited: ghost-town-run
+        localStorage.setItem('ghost-town-run', true);
+
+        displayLocalStorage();
+    </script>
+
+    <script src="../../../js/formatting.js"></script>
+</body>
+
+</html>
