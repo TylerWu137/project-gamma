@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Gamma</title>
+    <script src="js/p5.js"></script>
+    <link rel="stylesheet" href="css/styles-home.css"/>
+
+    <!--<script src="js/creatures.js"></script>-->
+
+</head>
+
+<body> 
+    <div id="wrapper"> <!-- Contains background image / scene drawing -->
+
+        <!-- Rain Animation -->
+        <div id="rain"></div>
+
+        <!-- Game Title -->
+        <div class="scalable-text" id="title">Project Gamma</div>
+
+        <!-- Start Button -> take to first scene -->
+        <div id="start">
+            <input class="scalable-text" id="start-button" type="button" value="begin your journey" onclick="nextPage('html/day00/intro/intro.html')"/>
+        </div>
+
+        <!-- Credits -->
+        <div class="scalable-text" id="footer" >
+            Tyler Wu
+            <br>
+            2025
+        </div>
+        
+    </div>
+
+    <!-- P5JS Files -->
+    <script src="js/Raindrop.js"></script>
+    <script src="js/Cloud.js"></script>
+    <script src="js/p5jsAnimations.js" defer></script>
+    
+
+    <script>
+        // Reset all local variables when home reached
+        localStorage.clear();
+
+        // Set base stats
+        // List of user's creatures: start with only Gamma
+        var Gamma = {
+            name: "Gamma",
+            moves: ["Bite"],
+            status: true // T = able to fight, F = unable to fight
+        };
+        var creatures = [Gamma];
+        localStorage.setItem("creatures", JSON.stringify(creatures));
+        // List of user's inventory items
+        localStorage.setItem("inventory", JSON.stringify(new Array()));
+        // Current creature
+        localStorage.setItem("currCreature", JSON.stringify(creatures[0]));
+        //console.log(JSON.parse(localStorage.getItem("creatures"))[0].moves);
+
+    </script>
+    
+    <script src="js/formatting.js"></script>
+</body>
+
+
+</html>
