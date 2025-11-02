@@ -1,0 +1,20 @@
+
+/* CONSTANTS (forest scenes) */
+:root {
+    --text-color: 92, 48, 22;
+    --notes-text-color: 70, 95, 55;
+    --dialogue-text-color: 63, 49, 102;
+    --background-color: 233, 205, 175;
+    --hover-color: 155, 112, 76;
+    --html-color: 250, 235, 215;
+    --border-img: url('../images/border-img.png');
+    font-size: calc((1.2vw + 1.2vh) / 2);
+}
+
+html, body {
+    background-color: rgb(var(--html-color)); /*temp*/
+}
+
+#wrapper {
+    background: url('../images/home.png');
+}

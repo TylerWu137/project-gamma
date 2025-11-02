@@ -1,0 +1,147 @@
+
+/* CONSTANTS */
+:root {
+    --text-color: rgb(92, 48, 22);
+    --background-color: rgb(233, 205, 175);
+    --hover-color: rgb(155, 112, 76);
+    --border-img: url('../images/border-img.png');
+}
+
+/* Main sections */
+
+html, body {
+    font-family: 'text-font';
+    margin:0;
+    width: 100vw;
+    height: 100vh;
+    display: fixed;
+    background-color: antiquewhite; /*temp*/
+}
+
+#wrapper {
+    position: relative;
+    max-width: 99%;
+    max-height: 99%;
+    background: url('../images/home.png') no-repeat;
+    overflow: hidden;
+    background-position: center center;
+    background-size: contain;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Canvas for rain animation */
+#rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Fade-in animation when page loads */
+body.loaded #wrapper {
+    opacity: 1;
+}
+/* Fade-out animation when leaving */
+body.leaving #wrapper {
+    opacity: 0;
+}
+
+/* Text */
+
+@font-face {
+    font-family: 'text-font';
+    src: url('../fonts/shadows-into-light-two.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'title-font';
+    src: url('../fonts/cinzel.ttf');
+    font-style: normal;
+}
+
+/* Title */
+
+#title {
+    position: relative;
+    width: auto;
+    height: 10%;
+    margin: 10% auto 5%;
+    text-align: center;
+    font-family: 'title-font';
+    font-size: 5vw;
+    z-index: 5;
+}
+
+
+/* Buttons (general) */
+
+input[type="button"] {
+    font-family: 'text-font';
+    color: var(--text-color); 
+    letter-spacing: .14vw;
+    word-spacing: -.1vw;
+    background-color: var(--background-color);
+    border: .1vw solid var(--hover-color);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+input[type="button"]:hover {
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    border: .1vw solid var(--hover-color);
+}
+
+/* Start Button */
+
+#start {
+    position: relative;
+    width: 50%;
+    height: 5%;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+}
+
+#start-button {
+    display: inline-block;
+    border-radius: 1vw;
+    padding: .67vw;
+    font-family: 'text-font';
+    font-size: 1.2vw;
+    opacity: .8;
+}
+
+#start:hover {
+    z-index: 5;
+}
+
+/* Footer with name and year */
+
+#footer {
+    position:absolute;
+    text-align:right;
+    right: 2%;
+    bottom: 2%;
+    font-family: 'text-font';
+    font-size: 1.2vw;
+    color: var(--text-color); 
+    letter-spacing: .14vw;  
+    word-spacing: -.1vw;
+    z-index: 5;
+}

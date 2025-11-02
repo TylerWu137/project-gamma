@@ -1,0 +1,25 @@
+
+/* CONSTANTS (underwater scenes) */
+:root {
+    --text-color: 22, 63, 92;
+    --notes-text-color: 70, 95, 55;
+    --dialogue-text-color: 63, 49, 102;
+    --background-color: 196, 221, 233;
+    --html-color: 219, 232, 238;
+    --hover-color: 76, 131, 155;
+    --border-img: url('../images/border-img.png');
+    font-size: calc((1.2vw + 1.2vh) / 2);
+
+}
+
+html, body {
+    margin:0;
+    width: 100vw;
+    height:100vh;
+    display: fixed;
+    background-color: rgb(var(--html-color)); /*temp*/
+}
+
+#wrapper {
+    background: url('../images/underwater.png');
+}

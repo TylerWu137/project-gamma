@@ -1,0 +1,579 @@
+/* Main sections */
+
+html, body {
+    margin:0;
+    width: 100vw;
+    height:100vh;
+    display: fixed;
+    cursor: none;
+}
+
+/* Fade-in animation when page loads */
+body.loaded #wrapper {
+    opacity: 1;
+}
+/* Fade-out animation when leaving */
+body.leaving #wrapper {
+    opacity: 0;
+}
+
+#wrapper {
+    position: relative;
+    background-repeat: no-repeat; 
+    overflow: hidden;
+    background-size:contain;
+    background-position: center center;  /* Ensures the background stays at the bottom */
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Canvas for rain, cloud animation */
+#wrapper > canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+#rain, #clouds, #mouse-blur, #leaves, #bubbles {
+    position: absolute;
+    top: 0 !important; 
+    left: 0 !important;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+header-section {
+    position: relative;
+    z-index: 4;
+}
+
+/* Text */
+
+@font-face {
+    font-family: 'text-font';
+    src: url('../fonts/shadows-into-light-two.ttf');
+    font-style: normal;
+}
+
+/* Buttons (general) */
+
+input[type="button"] {
+    font-family: 'text-font';
+    color: rgb(var(--text-color)); 
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    background-color: rgb(var(--background-color));
+    border: .1rem solid rgb(var(--hover-color));
+    cursor: none;
+    transition: 0.3s ease;
+    opacity: .8;
+}
+
+input[type="button"]:hover {
+    background-color: rgb(var(--hover-color));
+    color: rgb(var(--background-color));
+    border: .1rem solid rgb(var(--hover-color));
+}
+
+input[type="button"].only-text {
+    font-family: 'text-font';
+    color: rgb(var(--text-color)); 
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    background-color: transparent;
+    border: none;
+    cursor: none;
+    transition: 0.3s ease;
+    opacity: .8;
+}
+
+input[type="button"].only-text:hover {
+    color: rgb(var(--hover-color));
+}
+
+/* HUD */
+#HUD {
+    width:20%;
+    height:15%;
+    float: left;
+    /* background-color: var(--background-color); */
+    z-index: 5;
+}
+
+#user-icon {
+    max-height:100%;
+    max-width:48%;
+    float:left;
+    margin:2% auto;
+    opacity: 0;
+    /* background-color: var(--background-color); */
+    z-index: inherit;
+}
+
+#pet-and-inventory {
+    width:48%;
+    float:left;
+    margin:2% auto;
+    opacity: 0;
+    /* background-color: var(--background-color); */
+    z-index: inherit;
+}
+
+#pet-icon {
+    max-height:60%;
+    max-width:60%;
+    display: block;
+    margin: 0 auto;
+    z-index: inherit;
+}
+
+/* Menu */
+
+#menu {
+    width: 5.4rem;
+    float: right;
+    margin-top: 1vh;
+    margin-right: 1vw;
+    display: flex;              /* flex container */
+    flex-direction: column;     /* Stack children vertically */
+    gap: 0.5rem;               /* Space between button and options */
+    overflow: visible;
+    z-index: 4;
+}
+
+#menu-btn {
+    width: 5.4rem;
+    height: 1.6rem;
+    border-radius: 1rem;
+    order: 1; /* button is on top */
+    margin-bottom: 0.25rem;
+    z-index: inherit;
+}
+
+.menu-options {
+    width: 5.4rem;
+    opacity: 0;
+    display: flex;
+    flex-direction: column; /* vertical */
+    align-items: right; /* right align */
+    justify-content: center; /* Align to top */
+    gap: 0.5rem; /* space btwn buttons */
+    order: 2;
+    overflow: visible;
+    z-index: inherit;
+    pointer-events: none;
+}
+
+.menu-options.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.menu-options.fade-in {
+    pointer-events: auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.menu-option-btns {
+    font-size: 1rem;
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    text-align: right;
+    overflow-x: visible;
+    margin-left: -1rem; /* Adjust as needed */
+    cursor: none;
+    z-index: inherit;
+}
+
+/* Transparent overlay */
+#menu-overlay {
+    position: absolute;
+    max-width: inherit;
+    max-height: inherit;
+    width: inherit;
+    height: inherit;
+    margin: inherit;
+    background-color: rgb(var(--html-color));
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+#menu-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+#menu-overlay.fade-in {
+    opacity: 0.5;
+    pointer-events: auto;
+    animation: lowFadeIn 0.5s ease;
+}
+
+/* Main menu display for device data / companions */
+.menu-text {
+    font-family: 'text-font';
+    font-size: 1rem;
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    color: rgb(var(--text-color));
+}
+
+#menu-title {
+    font-family: 'text-font';
+    font-size: 1rem;
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    font-weight: 900;
+    color: rgb(var(--text-color));
+    margin-bottom: 3rem;
+}
+
+#menu-display {
+    position: absolute;
+    width: 85%;
+    height: 70%;
+    top: 45%;
+    left: 50%;
+    margin: inherit;
+    transform: translate(-50%, -50%);
+    background-color: rgb(var(--background-color));
+    border: .1rem solid rgb(var(--hover-color));
+    border-radius: 2rem;
+    cursor: auto;
+    opacity: 0;
+    z-index: 10;
+    padding: 3rem;
+    pointer-events: none;
+}
+#menu-display.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+#menu-display.fade-in {
+    opacity: 0.8;
+    pointer-events: auto;
+    animation: menuFadeIn 0.5s ease;
+}
+
+/* Exit button for menu pop up */
+#exit-menu {
+    position: absolute;
+    right: 3%;
+    top: 2%;
+}
+#menu-exit-btn {
+    aspect-ratio : 1 / 1;
+    display: block;
+    text-align: center;
+    padding-left: 50%;
+    border-radius: 50%;
+}
+#menu-exit-btn:hover {
+    cursor: pointer;
+}
+
+/* Inventory */
+#menu-inventory, #menu-companions {
+    position: absolute;
+    width: 85%;
+    height: 75%;
+    top: 55%;
+    left: 50%;
+    margin: inherit;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    background-color: rgb(var(--background-color));
+    cursor: auto;
+    opacity: 0;
+    z-index: 11;
+    pointer-events: none;
+}
+#menu-inventory::-webkit-scrollbar {
+    width: 0.7rem; /* scrollbar width  */
+}
+#menu-inventory::-webkit-scrollbar-track {
+    background: transparent; /* track invisible */
+}
+#menu-inventory::-webkit-scrollbar-thumb {
+    background: rgba(var(--text-color), 0.2);
+    border-radius: 6px;
+    border: 0.15rem solid transparent; /* padding */
+    background-clip: content-box; /* color within border */
+}
+#menu-inventory::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--text-color), 0.3); /* Darker on hover */
+}
+#menu-inventory.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+#menu-inventory.fade-in {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    transition: 0.3s ease;
+}
+.menu-item:hover {
+    background-color: rgb(var(--hover-color));
+    color: rgb(var(--background-color));
+}
+.item-bullet {
+    display: block;
+    min-width: 0.8%;
+    aspect-ratio: 1 / 1;
+    margin-right: 0.8rem;
+    border-radius: 25%;
+    background-color: rgb(var(--hover-color));
+    transition: 0.3s ease;
+}
+
+/* Companions */
+#menu-companions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+#menu-companions.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+#menu-companions.fade-in {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.5s ease;
+}
+.menu-companion {
+    width: 28%;
+    height: 40%;
+    padding: 1rem;
+    background-color: rgb(var(--background-color));
+    border: .1rem solid rgb(var(--hover-color));
+    border-radius: 2rem;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.menu-companion::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+}
+.menu-companion-header {
+    display: flex;
+    vertical-align: baseline;
+    height: auto;
+}
+.menu-companion-name {
+    float: left;
+    width: auto;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-right: 0.3rem;
+}
+.menu-companion-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    float: left;
+    width: auto;
+    margin-bottom: 1rem;
+}
+.menu-companion-move {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.1rem;
+    border-radius: 1rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    transition: 0.3s ease;
+}
+.move-bullet {
+    display: block;
+    min-width: 2.4%;
+    aspect-ratio: 1 / 1;
+    margin-right: 0.8rem;
+    border-radius: 25%;
+    background-color: rgb(var(--hover-color));
+    transition: 0.3s ease;
+}
+
+/* Textbox */
+
+#textbox {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 20%;
+    background-color: transparent;
+    font-family: 'text-font';
+    font-size: 1rem;
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    color: rgb(var(--text-color));
+    z-index: 4;
+}
+
+/* Text */
+
+#text {
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /* Stack paragraphs vertically */
+    justify-content: center; /* Center items vertically within the container */
+    width: 79%;
+    height: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    z-index: inherit;
+}
+
+#text p {
+    margin: 0; /* Reset any default margins from paragraphs */
+    margin-bottom: 1rem; /* Adjust value as needed */
+    z-index: inherit;
+}
+#text p:last-child {
+    margin-bottom: 0;
+}
+
+.step p {
+    margin: 0; /* Reset any default margins from paragraphs */
+    margin-bottom: 1rem; /* Adjust value as needed */
+}
+.step p:last-child {
+    margin-bottom: 0;
+}
+
+/* Letter animation */
+#text .letter {
+    opacity: 0;
+    display: inline;
+    animation: fadeIn 0.1s forwards;
+}
+.step .letter {
+    opacity: 0;
+    display: inline;
+    animation: fadeIn 0.1s forwards;
+}
+
+/* Text Steps */
+.step {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+}
+
+/* Special text */
+#text p:has(> .notes),
+#text p:has(> .dialogue) {
+  margin-left: 3%;
+  margin-bottom: 1rem; /* Maintain spacing */
+}
+#text p:has(> .name) {
+    margin-bottom: 0.3rem;
+}
+#text p:has(> .tameHeader) {
+    margin-bottom: -.5rem;
+}
+.name {
+    font-weight:1000;
+    font-style:italic;
+}
+.notes {
+    font-style:italic;
+    color: rgb(var(--notes-text-color));
+    font-size: 0.9rem;
+    display: inline-block;
+}
+.move, .item, .creature {
+    font-weight: 1000;
+}
+.alert {
+    font-weight:1000;
+}
+
+.dialogue {
+    font-style:italic;
+    color: rgb(var(--dialogue-text-color));
+    display: inline;
+}
+
+/* Options */
+
+#options {
+    float: left;
+    margin-left: 2%;
+    width: 15%;
+    height: 95%;
+    display: flex;
+    flex-direction: column; /* vertical */
+    align-items: center; /* Center align */
+    justify-content: center; /* Align to top */
+    gap: 1rem; /* space btwn buttons */
+    margin-bottom: 5%;
+    z-index: 4;
+}
+
+.option-button {
+    width: 100%;
+    flex: 1;
+    max-height: 25%;
+    border-radius: 1rem;
+    font-size: 1rem;
+    letter-spacing: .14rem;
+    word-spacing: -.1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    z-index: inherit;
+}
+.option-button.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.option-button.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes lowFadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.5; }
+}
+
+@keyframes menuFadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.8; }
+}
